@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { PinHeight, TrackPin } from "@/data/chapters";
 import { appleMusicTrackUrl, spotifyTrackUrl } from "@/lib/listen-links";
 
@@ -32,6 +32,31 @@ export function SongPin({
   showListen = true,
 }: SongPinProps) {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const trigger = triggerRef.current;
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus();
+    };
+  }, [open]);
+
   const height = pin.pinHeight ?? "medium";
   const title = caption ?? pin.title;
   const subtitle = subcaption ?? pin.artist;
@@ -86,6 +111,7 @@ export function SongPin({
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
         className="masonry-item group block w-full text-left animate-pin-in focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-soft"
@@ -155,6 +181,7 @@ export function SongPin({
                 </div>
               )}
               <button
+                ref={closeRef}
                 type="button"
                 onClick={() => setOpen(false)}
                 className="text-sm text-paper/60 underline-offset-4 hover:text-paper hover:underline"

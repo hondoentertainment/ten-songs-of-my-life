@@ -68,3 +68,12 @@ Spotify playlist URLs are written into the enriched JSON. Apple Music playlist c
 ## Social sharing
 
 Homepage and each chapter generate Open Graph images. After deploy, share a chapter URL in iMessage / X / Slack to preview the card. Set `NEXT_PUBLIC_SITE_URL` so absolute OG URLs resolve correctly.
+
+## SEO
+
+`sitemap.xml` (home + every chapter) and `robots.txt` are generated automatically from `src/app/sitemap.ts` and `src/app/robots.ts`. Both read `NEXT_PUBLIC_SITE_URL`, so set it in production for absolute URLs.
+
+## Accessibility
+
+- The pin modal closes on `Esc`, locks background scroll while open, and returns focus to the pin that opened it.
+- Animations and smooth scrolling are disabled when the visitor sets `prefers-reduced-motion`.
