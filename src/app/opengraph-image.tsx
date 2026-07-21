@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "10 Songs of My Life";
+export const alt = "9 Songs of My Life";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,7 +35,7 @@ export default function OgImage() {
           Visual mood board
         </div>
         <div style={{ display: "flex", fontSize: 84, lineHeight: 0.95 }}>
-          10 Songs of My Life
+          9 Songs of My Life
         </div>
         <div
           style={{

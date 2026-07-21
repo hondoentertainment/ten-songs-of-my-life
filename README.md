@@ -1,4 +1,4 @@
-# 10 Songs of My Life
+# 9 Songs of My Life
 
 A shareable **Pinterest-style mood board** of ten life-stage songs. Visitors browse visual pins, open a chapter board, and listen on Spotify or Apple Music. No visitor login.
 

@@ -14,7 +14,7 @@ export default function HomePage() {
           className="animate-fade-up mt-4 max-w-3xl font-display text-[clamp(2.8rem,9vw,5.6rem)] leading-[0.95] tracking-tight text-paper"
           style={{ animationDelay: "80ms" }}
         >
-          10 Songs of My Life
+          9 Songs of My Life
         </h1>
         <p
           className="animate-fade-up mt-5 max-w-xl text-base leading-relaxed text-paper/70 sm:text-lg"
@@ -34,7 +34,7 @@ export default function HomePage() {
             Enter the ten
           </a>
           <ShareButton
-            title="10 Songs of My Life"
+            title="9 Songs of My Life"
             text="A visual mood board of ten life-stage songs."
           />
         </div>
@@ -75,7 +75,7 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t border-paper/10 px-5 py-10 text-center text-xs text-paper/40">
-        10 Songs of My Life · share the board · play the mood
+        9 Songs of My Life · share the board · play the mood
       </footer>
     </main>
   );
