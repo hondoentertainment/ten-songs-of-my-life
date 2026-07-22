@@ -1,26 +1,35 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 
 type ShareButtonProps = {
   title: string;
   text: string;
   url?: string;
+  compact?: boolean;
 };
 
-export function ShareButton({ title, text, url }: ShareButtonProps) {
+export function ShareButton({
+  title,
+  text,
+  url,
+  compact = false,
+}: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
 
   async function handleShare() {
     const shareUrl =
       url ?? (typeof window !== "undefined" ? window.location.href : "");
 
+    track("share", { title });
+
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({ title, text, url: shareUrl });
         return;
       } catch {
-        // user cancelled or share failed — fall through to copy
+        // cancelled
       }
     }
 
@@ -37,9 +46,12 @@ export function ShareButton({ title, text, url }: ShareButtonProps) {
     <button
       type="button"
       onClick={handleShare}
-      className="inline-flex items-center rounded-sm border border-paper/25 bg-ink-soft/60 px-3.5 py-2 text-sm text-paper/90 transition hover:border-amber-soft/50 hover:text-paper"
+      className={
+        compact ? "btn-secondary shrink-0 px-3.5 text-xs" : "btn-secondary"
+      }
+      aria-label={copied ? "Link copied" : "Share"}
     >
-      {copied ? "Link copied" : "Share board"}
+      {copied ? "Copied" : "Share"}
     </button>
   );
 }

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "enrich": "tsx scripts/enrich-board.ts",
+    "enrich:itunes": "tsx scripts/enrich-itunes.ts",
     "spotify:auth": "tsx scripts/spotify-auth.ts"
   },
   "dependencies": {

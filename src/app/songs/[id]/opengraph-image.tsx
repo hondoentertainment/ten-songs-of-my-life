@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getChapter } from "@/data/chapters";
+import { withMedia } from "@/lib/media";
 
 export const runtime = "edge";
 export const alt = "Chapter mood board";
@@ -13,11 +14,12 @@ type Props = {
 export default async function ChapterOgImage({ params }: Props) {
   const { id } = await params;
   const chapter = getChapter(id);
-
   const stage = chapter?.stage ?? "Mood board";
   const mood = chapter?.mood ?? "10 Songs of My Life";
   const title = chapter?.title ?? "A chapter of sound";
-  const accent = chapter?.accent ?? "#d97706";
+  const accent = chapter?.accent ?? "#e8a317";
+  const art = chapter ? withMedia(chapter.seed).imageUrl : undefined;
+  const canUseArt = art && !art.startsWith("data:");
 
   return new ImageResponse(
     (
@@ -26,49 +28,78 @@ export default async function ChapterOgImage({ params }: Props) {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: 56,
-          background: `radial-gradient(ellipse 70% 55% at 70% 15%, ${accent}66, transparent 50%), linear-gradient(145deg, #1c1917 0%, #0c0a09 100%)`,
-          color: "#f5efe6",
+          background: "#0a0908",
+          color: "#f7f2ea",
           fontFamily: "Georgia, serif",
         }}
       >
         <div
           style={{
             display: "flex",
-            fontSize: 20,
-            letterSpacing: 5,
-            textTransform: "uppercase",
-            color: accent,
+            width: 630,
+            height: 630,
+            background: `linear-gradient(145deg, ${accent}, #0a0908)`,
           }}
         >
-          10 Songs of My Life
+          {canUseArt ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={art}
+              alt=""
+              width={630}
+              height={630}
+              style={{ objectFit: "cover", width: 630, height: 630 }}
+            />
+          ) : null}
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 28, color: "#f5efe6aa" }}>
-            {stage}
-          </div>
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: 48,
+          }}
+        >
           <div
             style={{
               display: "flex",
-              fontSize: 72,
-              lineHeight: 1,
-              marginTop: 12,
-              maxWidth: 900,
+              fontSize: 16,
+              letterSpacing: 5,
+              textTransform: "uppercase",
+              color: accent,
             }}
           >
-            {title}
+            10 Songs of My Life
           </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 30,
-              marginTop: 20,
-              color: "#f5efe6cc",
-            }}
-          >
-            {mood}
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", fontSize: 22, color: "#f7f2ea99" }}>
+              {stage}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 52,
+                lineHeight: 1.05,
+                marginTop: 10,
+                maxWidth: 480,
+              }}
+            >
+              {title}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 24,
+                marginTop: 16,
+                color: "#f7f2eacc",
+              }}
+            >
+              {mood}
+            </div>
+          </div>
+          <div style={{ display: "flex", fontSize: 18, color: "#f7f2ea66" }}>
+            Preview · Spotify · Apple Music
           </div>
         </div>
       </div>

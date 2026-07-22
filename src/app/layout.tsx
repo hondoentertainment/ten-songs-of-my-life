@@ -21,19 +21,19 @@ export const metadata: Metadata = {
     template: "%s · 10 Songs of My Life",
   },
   description:
-    "A visual mood board of ten songs for the stages and moods of a life—open each pin on Spotify or Apple Music.",
+    "Nine squares for the stages and moods of a life—tap a board, listen on Spotify or Apple Music.",
   openGraph: {
     type: "website",
     siteName: "10 Songs of My Life",
     title: "10 Songs of My Life",
     description:
-      "A Pinterest-style board of ten life-stage songs. Tap a pin. Play the mood.",
+      "Nine squares. Your life in songs. Tap a mood. Play the board.",
   },
   twitter: {
     card: "summary_large_image",
     title: "10 Songs of My Life",
     description:
-      "A visual mood board of ten songs for the stages and moods of a life.",
+      "Nine squares for the stages and moods of a life.",
   },
 };
 

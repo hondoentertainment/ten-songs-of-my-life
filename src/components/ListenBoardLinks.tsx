@@ -1,4 +1,7 @@
+"use client";
+
 import type { Chapter } from "@/data/chapters";
+import { track } from "@/lib/analytics";
 import { appleBoardUrl, spotifyBoardUrl } from "@/lib/listen-links";
 
 type ListenBoardLinksProps = {
@@ -12,17 +15,19 @@ export function ListenBoardLinks({ chapter }: ListenBoardLinksProps) {
         href={spotifyBoardUrl(chapter.spotifyPlaylistUrl, chapter.seed)}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center rounded-sm bg-[#1DB954] px-3.5 py-2 text-sm font-medium text-ink transition hover:brightness-110"
+        className="btn-spotify"
+        onClick={() => track("play_spotify", { id: chapter.id, board: true })}
       >
-        Play on Spotify
+        Spotify
       </a>
       <a
         href={appleBoardUrl(chapter.appleMusicPlaylistUrl, chapter.seed)}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center rounded-sm bg-paper px-3.5 py-2 text-sm font-medium text-ink transition hover:bg-paper-warm"
+        className="btn-apple"
+        onClick={() => track("play_apple", { id: chapter.id, board: true })}
       >
-        Play on Apple Music
+        Apple Music
       </a>
     </div>
   );

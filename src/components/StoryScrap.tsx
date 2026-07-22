@@ -3,28 +3,18 @@ type StoryScrapProps = {
   mood: string;
   title: string;
   story: string;
-  delayMs?: number;
 };
 
-export function StoryScrap({
-  stage,
-  mood,
-  title,
-  story,
-  delayMs = 80,
-}: StoryScrapProps) {
+export function StoryScrap({ stage, mood, title, story }: StoryScrapProps) {
   return (
-    <aside
-      className="masonry-item story-scrap animate-pin-in rounded-sm p-4 sm:p-5"
-      style={{ animationDelay: `${delayMs}ms` }}
-    >
-      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-ink-soft/70">
+    <aside className="story-block animate-fade-up rounded-sm p-5 sm:p-7">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
         {stage} · {mood}
       </p>
-      <h2 className="mt-2 font-display text-xl leading-snug text-ink-soft sm:text-2xl">
+      <h2 className="mt-2.5 font-display text-[1.55rem] leading-[1.15] tracking-tight text-ink sm:text-[1.85rem] text-balance">
         {title}
       </h2>
-      <p className="mt-3 font-body text-sm leading-relaxed text-ink-soft/85 sm:text-[0.95rem]">
+      <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-ink/75 sm:text-base">
         {story}
       </p>
     </aside>
