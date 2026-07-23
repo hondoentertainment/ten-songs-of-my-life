@@ -2,9 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { PinHeight, TrackPin } from "@/data/chapters";
-import { appleMusicTrackUrl, spotifyTrackUrl } from "@/lib/listen-links";
+import {
+  appleEmbedUrl,
+  appleMusicTrackUrl,
+  spotifyEmbedUrl,
+  spotifyTrackUrl,
+} from "@/lib/listen-links";
 
 type SongPinProps = {
   pin: TrackPin;
@@ -32,10 +37,37 @@ export function SongPin({
   showListen = true,
 }: SongPinProps) {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const trigger = triggerRef.current;
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus();
+    };
+  }, [open]);
+
   const height = pin.pinHeight ?? "medium";
   const title = caption ?? pin.title;
   const subtitle = subcaption ?? pin.artist;
   const isDataImage = pin.imageUrl?.startsWith("data:");
+  const spotifyEmbed = spotifyEmbedUrl(pin);
+  const appleEmbed = appleEmbedUrl(pin);
 
   const media = (
     <div
@@ -86,6 +118,7 @@ export function SongPin({
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
         className="masonry-item group block w-full text-left animate-pin-in focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-soft"
@@ -106,26 +139,46 @@ export function SongPin({
             className="w-full max-w-md overflow-hidden rounded-md bg-ink-soft shadow-lift animate-fade-up"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-[4/3] bg-ink">
-              {pin.imageUrl ? (
-                isDataImage ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={pin.imageUrl}
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <Image
-                    src={pin.imageUrl}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="400px"
-                  />
-                )
-              ) : null}
-            </div>
+            {spotifyEmbed ? (
+              <iframe
+                src={spotifyEmbed}
+                title={`${pin.title} on Spotify`}
+                className="w-full"
+                height={152}
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              />
+            ) : appleEmbed ? (
+              <iframe
+                src={appleEmbed}
+                title={`${pin.title} on Apple Music`}
+                className="w-full"
+                height={175}
+                allow="autoplay *; encrypted-media *;"
+                loading="lazy"
+              />
+            ) : (
+              <div className="relative aspect-[4/3] bg-ink">
+                {pin.imageUrl ? (
+                  isDataImage ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={pin.imageUrl}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={pin.imageUrl}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="400px"
+                    />
+                  )
+                ) : null}
+              </div>
+            )}
             <div className="space-y-4 p-5">
               <div>
                 <h3 className="font-display text-2xl text-paper">{pin.title}</h3>
@@ -155,6 +208,7 @@ export function SongPin({
                 </div>
               )}
               <button
+                ref={closeRef}
                 type="button"
                 onClick={() => setOpen(false)}
                 className="text-sm text-paper/60 underline-offset-4 hover:text-paper hover:underline"

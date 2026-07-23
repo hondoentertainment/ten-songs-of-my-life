@@ -1,4 +1,4 @@
-# 10 Songs of My Life
+# 9 Songs of My Life
 
 A shareable **Pinterest-style mood board** of ten life-stage songs. Visitors browse visual pins, open a chapter board, and listen on Spotify or Apple Music. No visitor login.
 
@@ -68,3 +68,18 @@ Spotify playlist URLs are written into the enriched JSON. Apple Music playlist c
 ## Social sharing
 
 Homepage and each chapter generate Open Graph images. After deploy, share a chapter URL in iMessage / X / Slack to preview the card. Set `NEXT_PUBLIC_SITE_URL` so absolute OG URLs resolve correctly.
+
+## SEO
+
+`sitemap.xml` (home + every chapter) and `robots.txt` are generated automatically from `src/app/sitemap.ts` and `src/app/robots.ts`. Both read `NEXT_PUBLIC_SITE_URL`, so set it in production for absolute URLs.
+
+## Browsing
+
+- **All songs** (`/all`) — the full track list across every chapter, each with Spotify/Apple links and per-board play links.
+- **Keyboard navigation** — on a chapter page, `←` / `→` move to the previous/next chapter.
+- **In-modal players** — when a pin has a resolved `spotifyId` or `appleId` (via enrich), the pin modal shows an embedded Spotify/Apple mini-player. Until then it falls back to the album art and listen buttons.
+
+## Accessibility
+
+- The pin modal closes on `Esc`, locks background scroll while open, and returns focus to the pin that opened it.
+- Animations and smooth scrolling are disabled when the visitor sets `prefers-reduced-motion`.

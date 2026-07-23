@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ChapterKeyboardNav } from "@/components/ChapterKeyboardNav";
 import { ListenBoardLinks } from "@/components/ListenBoardLinks";
 import { MasonryBoard } from "@/components/MasonryBoard";
 import { ShareButton } from "@/components/ShareButton";
@@ -27,7 +28,7 @@ export async function generateMetadata({
     title: `${chapter.stage} — ${chapter.mood}`,
     description: chapter.story,
     openGraph: {
-      title: `${chapter.title} · 10 Songs of My Life`,
+      title: `${chapter.title} · 9 Songs of My Life`,
       description: `${chapter.stage} · ${chapter.mood}. ${chapter.story}`,
     },
   };
@@ -39,9 +40,15 @@ export default async function ChapterPage({ params }: PageProps) {
   if (!chapter) notFound();
 
   const boardPins = [chapter.seed, ...chapter.pins];
+  const prevChapter = chapter.number > 1 ? chapters[chapter.number - 2] : undefined;
+  const nextChapter =
+    chapter.number < chapters.length ? chapters[chapter.number] : undefined;
+  const prevHref = prevChapter ? `/songs/${prevChapter.id}` : undefined;
+  const nextHref = nextChapter ? `/songs/${nextChapter.id}` : undefined;
 
   return (
     <main className="hero-wash min-h-screen">
+      <ChapterKeyboardNav prevHref={prevHref} nextHref={nextHref} />
       <header className="mx-auto max-w-[1400px] px-4 pt-8 sm:px-6 lg:px-8">
         <Link
           href="/#board"
@@ -67,7 +74,7 @@ export default async function ChapterPage({ params }: PageProps) {
           >
             <ListenBoardLinks chapter={chapter} />
             <ShareButton
-              title={`${chapter.title} · 10 Songs of My Life`}
+              title={`${chapter.title} · 9 Songs of My Life`}
               text={`${chapter.stage} — ${chapter.mood}`}
             />
           </div>
@@ -93,28 +100,31 @@ export default async function ChapterPage({ params }: PageProps) {
         </MasonryBoard>
       </section>
 
-      <nav className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 pb-16 sm:px-6 lg:px-8">
-        {chapter.number > 1 ? (
+      <nav className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 pb-6 sm:px-6 lg:px-8">
+        {prevChapter ? (
           <Link
-            href={`/songs/${chapters[chapter.number - 2].id}`}
+            href={prevHref!}
             className="text-sm text-paper/55 hover:text-paper"
           >
-            ← {chapters[chapter.number - 2].stage}
+            ← {prevChapter.stage}
           </Link>
         ) : (
           <span />
         )}
-        {chapter.number < chapters.length ? (
+        {nextChapter ? (
           <Link
-            href={`/songs/${chapters[chapter.number].id}`}
+            href={nextHref!}
             className="text-sm text-paper/55 hover:text-paper"
           >
-            {chapters[chapter.number].stage} →
+            {nextChapter.stage} →
           </Link>
         ) : (
           <span />
         )}
       </nav>
+      <p className="mx-auto max-w-[1400px] px-4 pb-16 text-center text-xs text-paper/30 sm:px-6 lg:px-8">
+        Tip: use ← and → to move between chapters
+      </p>
     </main>
   );
 }
