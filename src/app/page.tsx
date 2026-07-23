@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MasonryBoard } from "@/components/MasonryBoard";
 import { SongPin } from "@/components/SongPin";
 import { ShareButton } from "@/components/ShareButton";
@@ -53,9 +54,12 @@ export default function HomePage() {
               Tap a stage pin to open its mood collage.
             </p>
           </div>
-          <p className="hidden text-xs uppercase tracking-[0.2em] text-paper/40 sm:block">
-            10 pins
-          </p>
+          <Link
+            href="/all"
+            className="shrink-0 text-xs uppercase tracking-[0.2em] text-paper/50 transition hover:text-amber-soft"
+          >
+            All songs →
+          </Link>
         </div>
 
         <MasonryBoard>

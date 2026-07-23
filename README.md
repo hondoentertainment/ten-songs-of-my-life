@@ -73,6 +73,12 @@ Homepage and each chapter generate Open Graph images. After deploy, share a chap
 
 `sitemap.xml` (home + every chapter) and `robots.txt` are generated automatically from `src/app/sitemap.ts` and `src/app/robots.ts`. Both read `NEXT_PUBLIC_SITE_URL`, so set it in production for absolute URLs.
 
+## Browsing
+
+- **All songs** (`/all`) — the full track list across every chapter, each with Spotify/Apple links and per-board play links.
+- **Keyboard navigation** — on a chapter page, `←` / `→` move to the previous/next chapter.
+- **In-modal players** — when a pin has a resolved `spotifyId` or `appleId` (via enrich), the pin modal shows an embedded Spotify/Apple mini-player. Until then it falls back to the album art and listen buttons.
+
 ## Accessibility
 
 - The pin modal closes on `Esc`, locks background scroll while open, and returns focus to the pin that opened it.
