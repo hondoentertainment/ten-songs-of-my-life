@@ -211,28 +211,8 @@ export const chapters: Chapter[] = [
     accent: "#ca8a04",
   },
   {
-    id: "solo-clarity",
-    number: 8,
-    stage: "Solo chapter",
-    mood: "Quiet clarity",
-    title: "Learning your own tempo",
-    story:
-      "Alone without lonely. Morning walks, notebooks, songs that make space instead of noise.",
-    seed: pin("Holocene", "Bon Iver", "#a8a29e", 0, { year: 2011 }),
-    pins: [
-      pin("Myth", "Beach House", "#a8a29e", 1),
-      pin("Silver Soul", "Beach House", "#a8a29e", 2),
-      pin("Slow Burn", "Kacey Musgraves", "#a8a29e", 3),
-      pin("Bloom", "The Paper Kites", "#a8a29e", 4),
-      pin("To Build a Home", "The Cinematic Orchestra", "#a8a29e", 5),
-    ],
-    moodTags: ["ambient", "reflective", "soft"],
-    coverHint: "fog over empty beach",
-    accent: "#a8a29e",
-  },
-  {
     id: "reinvention",
-    number: 9,
+    number: 8,
     stage: "Reinvention",
     mood: "Fresh voltage",
     title: "Start the record over",
@@ -252,7 +232,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "now-horizon",
-    number: 10,
+    number: 9,
     stage: "Right now",
     mood: "Open horizon",
     title: "Still becoming",

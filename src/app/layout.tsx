@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "9 Songs of My Life",
     description:
-      "A visual mood board of ten songs for the stages and moods of a life.",
+      "A visual mood board of nine songs for the stages and moods of a life.",
   },
 };
 

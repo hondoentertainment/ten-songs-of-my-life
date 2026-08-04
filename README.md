@@ -1,6 +1,6 @@
 # 9 Songs of My Life
 
-A shareable **Pinterest-style mood board** of ten life-stage songs. Visitors browse visual pins, open a chapter board, and listen on Spotify or Apple Music. No visitor login.
+A shareable **Pinterest-style mood board** of nine life-stage songs. Visitors browse visual pins, open a chapter board, and listen on Spotify or Apple Music. No visitor login.
 
 ## Quick start
 
@@ -11,7 +11,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Edit your ten songs
+## Edit your nine songs
 
 Content lives in [`src/data/chapters.ts`](src/data/chapters.ts).
 

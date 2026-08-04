@@ -21,7 +21,7 @@ export default function HomePage() {
           className="animate-fade-up mt-5 max-w-xl text-base leading-relaxed text-paper/70 sm:text-lg"
           style={{ animationDelay: "160ms" }}
         >
-          Ten stages. Ten moods. A visual board you can wander—and play on
+          Nine stages. Nine moods. A visual board you can wander—and play on
           Spotify or Apple Music.
         </p>
         <div
@@ -32,11 +32,11 @@ export default function HomePage() {
             href="#board"
             className="inline-flex items-center rounded-sm bg-amber-glow px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-amber-soft"
           >
-            Enter the ten
+            Enter the nine
           </a>
           <ShareButton
             title="9 Songs of My Life"
-            text="A visual mood board of ten life-stage songs."
+            text="A visual mood board of nine life-stage songs."
           />
         </div>
       </section>
