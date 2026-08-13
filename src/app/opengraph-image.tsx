@@ -46,7 +46,7 @@ export default function OgImage() {
             maxWidth: 720,
           }}
         >
-          Ten stages. Ten moods. Tap a pin. Play the board.
+          Nine stages. Nine moods. Tap a pin. Play the board.
         </div>
       </div>
     ),

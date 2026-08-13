@@ -60,7 +60,7 @@ export default async function ChapterPage({ params }: PageProps) {
         <div className="mt-8 flex flex-col gap-6 border-b border-paper/10 pb-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl animate-fade-up">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-soft/80">
-              Pin {chapter.number} of 10
+              Pin {chapter.number} of {chapters.length}
             </p>
             <h1 className="mt-3 font-display text-[clamp(2.2rem,6vw,3.8rem)] leading-[1] text-paper">
               {chapter.stage}
