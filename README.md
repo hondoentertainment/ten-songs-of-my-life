@@ -1,4 +1,4 @@
-# 10 Songs of My Life
+# 9 Songs of My Life
 
 A shareable **3×3 mood board** for music lovers: preview 30s clips, open Spotify / Apple Music, lock categories, save boards, embed chapters, and **make your own Nine**.
 

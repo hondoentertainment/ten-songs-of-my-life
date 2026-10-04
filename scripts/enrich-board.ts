@@ -241,7 +241,7 @@ async function main() {
 
       const playlist = await createPlaylist(
         spotifyUserId,
-        `10 Songs · ${chapter.stage}`,
+        `9 Songs · ${chapter.stage}`,
         chapter.story.slice(0, 280),
       );
       await addTracksToPlaylist(playlist.id, uris);
@@ -254,7 +254,7 @@ async function main() {
 
       if (appleIds.length) {
         const applePl = await createAppleLibraryPlaylist(
-          `10 Songs · ${chapter.stage}`,
+          `9 Songs · ${chapter.stage}`,
           chapter.story.slice(0, 280),
           appleIds,
         );

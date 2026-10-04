@@ -1,5 +1,5 @@
 # Product Requirements Document  
-**10 Songs of My Life**
+**9 Songs of My Life**
 
 | Field | Value |
 | --- | --- |
@@ -13,7 +13,7 @@
 
 ## 1. Summary
 
-**10 Songs of My Life** is a shareable personal website that presents life stages and moods as a **3×3 square mood board** (nine core songs), with extra lockable category boards beyond the nine. Each board is anchored by a seed song, expanded with related tracks as album-art pins, and opens for listening on **Spotify** or **Apple Music**.
+**9 Songs of My Life** is a shareable personal website that presents life stages and moods as a **3×3 square mood board** (nine core songs), with extra lockable category boards beyond the nine. Each board is anchored by a seed song, expanded with related tracks as album-art pins, and opens for listening on **Spotify** or **Apple Music**.
 
 Visitors do not create accounts. The owner curates content; the site is built for browsing, locking into a mood category, and sharing chapters on social media.
 
@@ -63,7 +63,7 @@ There is no lightweight way to turn a life soundtrack into a **beautiful, sharea
 ## 5. Product principles
 
 1. **Board first, playlist second** — The UI is a collage of pins, not a track list.
-2. **Brand first** — “10 Songs of My Life” is the hero signal on first viewport.
+2. **Brand first** — “9 Songs of My Life” is the hero signal on first viewport.
 3. **One composition** — Home is one atmospheric experience, not a dashboard.
 4. **Listen without friction** — No visitor login; deep links only.
 5. **Share-ready** — Every chapter has unique title, description, and OG image.
@@ -228,7 +228,7 @@ Each chapter includes:
 | Time-to-first-listen | Visitor reaches Spotify/Apple within 2 taps from a chapter |
 | Share quality | OG preview shows brand + chapter mood (manual check) |
 | Category engagement | ≥40% of home sessions use a non-All lock (when analytics added) |
-| Owner publish time | Replace placeholder Ten + redeploy in &lt;1 hour |
+| Owner publish time | Replace placeholder Nine + redeploy in &lt;1 hour |
 | Mobile usability | Full journey completable on phone without horizontal scroll bugs |
 
 ---
@@ -241,7 +241,7 @@ Each chapter includes:
 | Apple playlist create needs Music User Token | Allow manual playlist URL paste; enrich remains optional |
 | Placeholder art looks unfinished | Run enrich or paste real `imageUrl` before major shares |
 | Content quality depends on owner | Clear schema + README; keep stories short (2–4 sentences) |
-| Brand says “10” while core visual is 9 squares | Product name stays; home defaults to The Nine as a 3×3 |
+| Brand says “9” and core visual is 9 squares | Brand and board stay aligned |
 
 ---
 

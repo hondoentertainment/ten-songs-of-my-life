@@ -33,7 +33,7 @@ export async function generateMetadata({
     title: `${chapter.stage} — ${chapter.mood}`,
     description: chapter.story,
     openGraph: {
-      title: `${chapter.title} · 10 Songs of My Life`,
+      title: `${chapter.title} · 9 Songs of My Life`,
       description: `${chapter.stage} · ${chapter.mood}. ${chapter.story}`,
     },
   };
@@ -89,7 +89,7 @@ export default async function ChapterPage({ params }: PageProps) {
             <ListenBoardLinks chapter={{ ...chapter, seed }} />
             <FavoriteButton id={chapter.id} />
             <ShareButton
-              title={`${chapter.title} · 10 Songs of My Life`}
+              title={`${chapter.title} · 9 Songs of My Life`}
               text={`${chapter.stage} — ${chapter.mood}`}
             />
           </div>

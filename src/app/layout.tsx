@@ -17,21 +17,21 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
   title: {
-    default: "10 Songs of My Life",
-    template: "%s · 10 Songs of My Life",
+    default: "9 Songs of My Life",
+    template: "%s · 9 Songs of My Life",
   },
   description:
     "Nine squares for the stages and moods of a life—tap a board, listen on Spotify or Apple Music.",
   openGraph: {
     type: "website",
-    siteName: "10 Songs of My Life",
-    title: "10 Songs of My Life",
+    siteName: "9 Songs of My Life",
+    title: "9 Songs of My Life",
     description:
       "Nine squares. Your life in songs. Tap a mood. Play the board.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "10 Songs of My Life",
+    title: "9 Songs of My Life",
     description:
       "Nine squares for the stages and moods of a life.",
   },

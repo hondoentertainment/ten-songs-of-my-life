@@ -15,7 +15,7 @@ export default async function ChapterOgImage({ params }: Props) {
   const { id } = await params;
   const chapter = getChapter(id);
   const stage = chapter?.stage ?? "Mood board";
-  const mood = chapter?.mood ?? "10 Songs of My Life";
+  const mood = chapter?.mood ?? "9 Songs of My Life";
   const title = chapter?.title ?? "A chapter of sound";
   const accent = chapter?.accent ?? "#e8a317";
   const art = chapter ? withMedia(chapter.seed).imageUrl : undefined;
@@ -70,7 +70,7 @@ export default async function ChapterOgImage({ params }: Props) {
               color: accent,
             }}
           >
-            10 Songs of My Life
+            9 Songs of My Life
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontSize: 22, color: "#f7f2ea99" }}>

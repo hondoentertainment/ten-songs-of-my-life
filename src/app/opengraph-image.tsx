@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "10 Songs of My Life";
+export const alt = "9 Songs of My Life";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -42,7 +42,7 @@ export default function OgImage() {
               letterSpacing: -1,
             }}
           >
-            10 Songs of My Life
+            9 Songs of My Life
           </div>
           <div style={{ display: "flex", fontSize: 28, color: "#f7f2ea99" }}>
             Nine squares. Tap a mood. Play the board.

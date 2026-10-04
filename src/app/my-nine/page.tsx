@@ -62,7 +62,7 @@ export default function MyNinePage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <ShareButton title="My Nine · 10 Songs of My Life" text="My nine life songs." />
+            <ShareButton title="My Nine · 9 Songs of My Life" text="My nine life songs." />
             <Link href="/create" className="btn-secondary">
               Edit
             </Link>

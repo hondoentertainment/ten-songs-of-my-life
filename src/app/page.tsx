@@ -20,7 +20,7 @@ export default function HomePage() {
                 For music lovers
               </p>
               <h1 className="mt-2 font-display text-[clamp(1.85rem,7vw,2.75rem)] leading-[0.98] tracking-tight text-paper text-balance">
-                10 Songs of My Life
+                9 Songs of My Life
               </h1>
               <p className="mt-3 max-w-md text-[0.9rem] leading-relaxed text-paper/55 sm:text-[0.95rem]">
                 Nine squares for life’s stages—preview a clip, open Spotify or
@@ -28,7 +28,7 @@ export default function HomePage() {
               </p>
             </div>
             <ShareButton
-              title="10 Songs of My Life"
+              title="9 Songs of My Life"
               text="Nine squares for the songs of a life."
               compact
             />

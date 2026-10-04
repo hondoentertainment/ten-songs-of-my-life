@@ -41,7 +41,7 @@ export default async function EmbedPage({ params }: PageProps) {
         <div className="mb-3 flex items-start justify-between gap-2">
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-soft">
-              10 Songs of My Life
+              9 Songs of My Life
             </p>
             <h1 className="mt-1 truncate font-display text-xl">{chapter.stage}</h1>
             <p className="truncate text-xs text-paper/50">{chapter.mood}</p>
